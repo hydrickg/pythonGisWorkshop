@@ -2090,13 +2090,13 @@ In&nbsp;[11]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[15]:
+In&nbsp;[1]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">home</span> <span class="o">=</span> <span class="s">&#39;C:/Users/ruesca&#39;</span>
-<span class="k">print</span> <span class="n">home</span>
-<span class="n">docs</span> <span class="o">=</span> <span class="n">home</span> <span class="o">+</span> <span class="s">&#39;/Documents&#39;</span>
-<span class="k">print</span> <span class="n">docs</span>
+<div class="highlight"><pre><span class="c"># Replace ruesca with your username</span>
+<span class="n">home</span> <span class="o">=</span> <span class="s">&#39;C:/Users/ruesca&#39;</span>
+<span class="n">fgdb</span> <span class="o">=</span> <span class="n">home</span> <span class="o">+</span> <span class="s">&#39;/WLIA_2014/WLIA_pythonclass_data.gdb&#39;</span>
+<span class="k">print</span> <span class="n">fgdb</span>
 </pre></div>
 
 </div>
@@ -2109,8 +2109,7 @@ In&nbsp;[15]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-C:\Users\ruesca
-C:\Users\ruesca/Documents
+C:/Users/ruesca/WLIA_2014/WLIA_pythonclass_data.gdb
 
 </pre>
 </div>
@@ -2170,7 +2169,7 @@ C:\Users\ruesca
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[21]:
+In&nbsp;[2]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">arcpy</span>
@@ -2188,8 +2187,7 @@ In&nbsp;[21]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-C:\Users\ruesca/pythonWorkshopWLIA2014/WLIA_pythonclass_data.gdb
-C:\Users\ruesca/pythonWorkshopWLIA2014/WLIA_pythonclass_data.gdb
+None
 
 </pre>
 </div>
@@ -2202,13 +2200,10 @@ C:\Users\ruesca/pythonWorkshopWLIA2014/WLIA_pythonclass_data.gdb
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[22]:
+In&nbsp;[4]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="c"># Define a variable called fgdb that points to the geodatabase for the workshop</span>
-<span class="n">fgdb</span> <span class="o">=</span> <span class="n">wd</span> <span class="o">+</span> <span class="s">&#39;/WLIA_pythonclass_data.gdb&#39;</span>
-
-<span class="c"># Set the workspace environment variable to the workshop geodatabase.</span>
+<div class="highlight"><pre><span class="c"># Set the workspace environment variable to the workshop geodatabase.</span>
 <span class="c"># This will give us access to its datasets without having to define the full path</span>
 <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="n">fgdb</span>
 
@@ -2251,7 +2246,7 @@ Rasters: [u&apos;DEM30m&apos;]
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[23]:
+In&nbsp;[5]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="c"># Let&#39;s create a complete list of all our datasets, feature classes and rasters.</span>
@@ -2285,7 +2280,7 @@ In&nbsp;[23]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[24]:
+In&nbsp;[6]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="c"># Pull the 0th (i.e., Pythonic &quot;first&quot;) element out of the list of feature classes</span>
@@ -2303,12 +2298,12 @@ In&nbsp;[24]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[24]:</div>
+    Out[6]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
 <pre>
-&lt;Result &apos;C:\\Users\\ruesca\\pythonWorkshopWLIA2014\\WLIA_pythonclass_data.gdb\\simplified_roads&apos;&gt;
+&lt;Result &apos;C:\\Users\\ruesca\\WLIA_2014\\WLIA_pythonclass_data.gdb\\simplified_roads&apos;&gt;
 </pre>
 
 </div>
@@ -2319,21 +2314,39 @@ In&nbsp;[24]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now let's get a little fancier. Let's automate a common GIS task--projecting many feature classes. If we wanted to project just one dataset, the code would like this:</p>
+<p>Now let's get a little fancier. Let's automate a common GIS task--creating buffers around features. If we wanted to create buffers for just one dataset, the code would like this:</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[]:
+In&nbsp;[8]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="c"># First we define an output name</span>
 <span class="n">output_roads</span> <span class="o">=</span> <span class="n">roads</span> <span class="o">+</span> <span class="s">&#39;_prj&#39;</span>
-<span class="c"># and then we define the projection of the output</span>
-<span class="n">sr</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">SpatialReference</span><span class="p">(</span><span class="s">&quot;USA_Contiguous_Albers_Equal_Area_Conic_USGS_version&quot;</span><span class="p">)</span>
-<span class="c"># Finally, we pass all the arguments to the arcpy.Project_management function</span>
-<span class="n">Project_management</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="n">output_roads</span><span class="p">,</span> <span class="n">sr</span><span class="p">)</span>
+<span class="c"># And a distance with units</span>
+<span class="n">d</span> <span class="o">=</span> <span class="s">&#39;100 meters&#39;</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="n">output_roads</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
 </pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt output_prompt">
+    Out[8]:</div>
+<div class="box-flex1 output_subarea output_pyout">
+
+
+<pre>
+&lt;Result &apos;C:/Users/ruesca/WLIA_2014/WLIA_pythonclass_data.gdb\\Roads_Census2k_prj&apos;&gt;
+</pre>
+
+</div>
+</div>
 
 </div>
 </div>
@@ -2345,18 +2358,18 @@ In&nbsp;[]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[27]:
+In&nbsp;[9]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="c"># Again, we define our output projection</span>
+<div class="highlight"><pre><span class="c"># Again, we define our distance</span>
 <span class="c"># Note that we can define this outside the loop</span>
 <span class="c"># Anything that does not need to iterate can be placed outside the loop</span>
-<span class="n">sr</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">SpatialReference</span><span class="p">(</span><span class="s">&quot;USA_Contiguous_Albers_Equal_Area_Conic_USGS_version&quot;</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="s">&#39;100 meters&#39;</span>
 <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
     <span class="c"># Then we define an output that is relative to the iterator</span>
-    <span class="n">output</span> <span class="o">=</span> <span class="n">dataset</span> <span class="o">+</span> <span class="s">&#39;_auto_project&#39;</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">dataset</span> <span class="o">+</span> <span class="s">&#39;_buffer_loop&#39;</span>
     <span class="k">print</span> <span class="n">output</span>
-    <span class="n">arcpy</span><span class="o">.</span><span class="n">Project_management</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">sr</span><span class="p">)</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2369,9 +2382,9 @@ In&nbsp;[27]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-Roads_Census2k_clip
-Sections_clip
-QSections_clip
+Roads_Census2k_buffer_loop
+Sections_buffer_loop
+QSections_buffer_loop
 </pre>
 </div>
 </div>
@@ -2381,21 +2394,21 @@ QSections_clip
 <pre>
 <span class="ansired">---------------------------------------------------------------------------</span>
 <span class="ansired">ExecuteError</span>                              Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-27-2e0631522a47&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
-<span class="ansigreen">      2</span>     output <span class="ansiyellow">=</span> dataset <span class="ansiyellow">+</span> <span class="ansiblue">&apos;_clip&apos;</span><span class="ansiyellow"></span>
-<span class="ansigreen">      3</span>     <span class="ansigreen">print</span> output<span class="ansiyellow"></span>
-<span class="ansigreen">----&gt; 4</span><span class="ansiyellow">     </span>arcpy<span class="ansiyellow">.</span>Intersect_analysis<span class="ansiyellow">(</span><span class="ansiyellow">[</span><span class="ansiblue">&apos;MCD_layer&apos;</span><span class="ansiyellow">,</span> dataset<span class="ansiyellow">]</span><span class="ansiyellow">,</span> output<span class="ansiyellow">)</span><span class="ansiyellow"></span>
+<span class="ansigreen">&lt;ipython-input-9-faca67b2fc70&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">      7</span>     output <span class="ansiyellow">=</span> dataset <span class="ansiyellow">+</span> <span class="ansiblue">&apos;_buffer_loop&apos;</span><span class="ansiyellow"></span>
+<span class="ansigreen">      8</span>     <span class="ansigreen">print</span> output<span class="ansiyellow"></span>
+<span class="ansigreen">----&gt; 9</span><span class="ansiyellow">     </span>arcpy<span class="ansiyellow">.</span>Buffer_analysis<span class="ansiyellow">(</span>dataset<span class="ansiyellow">,</span> output<span class="ansiyellow">,</span> d<span class="ansiyellow">)</span><span class="ansiyellow"></span>
 
-<span class="ansigreen">C:\Program Files (x86)\ArcGIS\Desktop10.1\arcpy\arcpy\analysis.py</span> in <span class="ansicyan">Intersect</span><span class="ansiblue">(in_features, out_feature_class, join_attributes, cluster_tolerance, output_type)</span>
-<span class="ansigreen">    310</span>         <span class="ansigreen">return</span> retval<span class="ansiyellow"></span>
-<span class="ansigreen">    311</span>     <span class="ansigreen">except</span> Exception<span class="ansiyellow">,</span> e<span class="ansiyellow">:</span><span class="ansiyellow"></span>
-<span class="ansigreen">--&gt; 312</span><span class="ansiyellow">         </span><span class="ansigreen">raise</span> e<span class="ansiyellow"></span>
-<span class="ansigreen">    313</span> <span class="ansiyellow"></span>
-<span class="ansigreen">    314</span> <span class="ansiyellow">@</span>gptooldoc<span class="ansiyellow">(</span><span class="ansiblue">&apos;SpatialJoin_analysis&apos;</span><span class="ansiyellow">,</span> None<span class="ansiyellow">)</span><span class="ansiyellow"></span>
+<span class="ansigreen">C:\Program Files (x86)\ArcGIS\Desktop10.1\arcpy\arcpy\analysis.py</span> in <span class="ansicyan">Buffer</span><span class="ansiblue">(in_features, out_feature_class, buffer_distance_or_field, line_side, line_end_type, dissolve_option, dissolve_field)</span>
+<span class="ansigreen">    684</span>         <span class="ansigreen">return</span> retval<span class="ansiyellow"></span>
+<span class="ansigreen">    685</span>     <span class="ansigreen">except</span> Exception<span class="ansiyellow">,</span> e<span class="ansiyellow">:</span><span class="ansiyellow"></span>
+<span class="ansigreen">--&gt; 686</span><span class="ansiyellow">         </span><span class="ansigreen">raise</span> e<span class="ansiyellow"></span>
+<span class="ansigreen">    687</span> <span class="ansiyellow"></span>
+<span class="ansigreen">    688</span> <span class="ansiyellow">@</span>gptooldoc<span class="ansiyellow">(</span><span class="ansiblue">&apos;CreateThiessenPolygons_analysis&apos;</span><span class="ansiyellow">,</span> None<span class="ansiyellow">)</span><span class="ansiyellow"></span>
 
 <span class="ansired">ExecuteError</span>: Failed to execute. Parameters are not valid.
-ERROR 000732: Input Features: Dataset MCD_layer #;DEM30m # does not exist or is not supported
-Failed to execute (Intersect).
+ERROR 000732: Input Features: Dataset DEM30m does not exist or is not supported
+Failed to execute (Buffer).
 </pre>
 </div>
 </div>
@@ -2470,14 +2483,10 @@ In&nbsp;[30]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[31]:
+In&nbsp;[10]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="c"># First, let&#39;s set up our environment from scratch</span>
-<span class="nb">reload</span><span class="p">(</span><span class="n">workshopEnv</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">workshopEnv</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">desc</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Describe</span><span class="p">(</span><span class="n">roads</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">desc</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Describe</span><span class="p">(</span><span class="n">roads</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">desc</span><span class="o">.</span><span class="n">name</span>
 <span class="k">print</span> <span class="n">desc</span><span class="o">.</span><span class="n">dataType</span>
 <span class="k">print</span> <span class="n">desc</span><span class="o">.</span><span class="n">shapeType</span>
@@ -2511,7 +2520,7 @@ Polyline
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[32]:
+In&nbsp;[11]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="c"># Let&#39;s take a look at the dataType of each dataset</span>
@@ -2544,16 +2553,16 @@ FeatureClass
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[33]:
+In&nbsp;[12]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="c"># Let&#39;s play with conditional statements</span>
+<div class="highlight"><pre><span class="c"># And using conditional statements...</span>
 <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
     <span class="n">desc</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Describe</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">desc</span><span class="o">.</span><span class="n">dataType</span> <span class="o">==</span> <span class="s">&#39;FeatureClass&#39;</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&#39;Use the generic project tool&#39;</span>
+        <span class="k">print</span> <span class="s">&#39;Run the buffer tool&#39;</span>
     <span class="k">elif</span> <span class="n">desc</span><span class="o">.</span><span class="n">dataType</span> <span class="o">==</span> <span class="s">&#39;RasterDataset&#39;</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&#39;Use the raster project tool&#39;</span>
+        <span class="k">print</span> <span class="s">&#39;Do not run the buffer tool&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">print</span> <span class="s">&#39;Throw hands in air, take a walk, and/or get a cup of coffee&#39;</span>
 </pre></div>
@@ -2568,9 +2577,9 @@ In&nbsp;[33]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-Use the Intersect tool
-Use the Intersect tool
-Use the Intersect tool
+Run the buffer tool
+Run the buffer tool
+Run the buffer tool
 </pre>
 </div>
 </div>
@@ -2586,18 +2595,18 @@ Use the Intersect tool
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[34]:
+In&nbsp;[13]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">sr</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">SpatialReference</span><span class="p">(</span><span class="s">&quot;USA_Contiguous_Albers_Equal_Area_Conic_USGS_version&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">d</span> <span class="o">=</span> <span class="s">&#39;100 meters&#39;</span>
 <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
     <span class="n">desc</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Describe</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-    <span class="n">output</span> <span class="o">=</span> <span class="n">dataset</span> <span class="o">+</span> <span class="s">&#39;_clip&#39;</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">dataset</span> <span class="o">+</span> <span class="s">&#39;_buffer_only_features&#39;</span>
     <span class="k">print</span> <span class="n">output</span>
     <span class="k">if</span> <span class="n">desc</span><span class="o">.</span><span class="n">dataType</span> <span class="o">==</span> <span class="s">&#39;FeatureClass&#39;</span><span class="p">:</span>
-        <span class="n">arcpy</span><span class="o">.</span><span class="n">Project_management</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">sr</span><span class="p">)</span>
+        <span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">desc</span><span class="o">.</span><span class="n">dataType</span> <span class="o">==</span> <span class="s">&#39;RasterDataset&#39;</span><span class="p">:</span>
-        <span class="n">arcpy</span><span class="o">.</span><span class="n">ProjectRaster_management</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="s">&#39;NEAREST&#39;</span><span class="p">)</span>
+        <span class="k">continue</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">print</span> <span class="s">&#39;Throw hands in air, take a walk, and/or get a cup of coffee&#39;</span>
 </pre></div>
@@ -2612,9 +2621,9 @@ In&nbsp;[34]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-Roads_Census2k_clip
-Sections_clip
-QSections_clip
+Roads_Census2k_buffer_only_features
+Sections_buffer_only_features
+QSections_buffer_only_features
 </pre>
 </div>
 </div>
@@ -2629,7 +2638,7 @@ QSections_clip
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[35]:
+In&nbsp;[14]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
@@ -2655,10 +2664,6 @@ Roads_Census2k
 NAD_1983_HARN_Wisconsin_TM
 
 Sections
-542757.8026 284338.454 552499.84 303756.402000001 NaN NaN NaN NaN
-NAD_1983_HARN_Wisconsin_TM
-
-QSections
 </pre>
 </div>
 </div>
@@ -2673,7 +2678,7 @@ QSections
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[36]:
+In&nbsp;[15]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
@@ -2709,7 +2714,7 @@ QSections
 <pre>
 <span class="ansired">---------------------------------------------------------------------------</span>
 <span class="ansired">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-36-85d173cae294&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">&lt;ipython-input-15-85d173cae294&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
 <span class="ansigreen">      2</span>     desc <span class="ansiyellow">=</span> arcpy<span class="ansiyellow">.</span>Describe<span class="ansiyellow">(</span>dataset<span class="ansiyellow">)</span><span class="ansiyellow"></span>
 <span class="ansigreen">      3</span>     <span class="ansigreen">print</span> dataset<span class="ansiyellow"></span>
 <span class="ansigreen">----&gt; 4</span><span class="ansiyellow">     </span><span class="ansigreen">print</span> desc<span class="ansiyellow">.</span>shapeType<span class="ansiyellow"></span>
@@ -2741,10 +2746,11 @@ QSections
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[37]:
+In&nbsp;[17]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
+<div class="highlight"><pre><span class="n">wd</span> <span class="o">=</span> <span class="s">&#39;C:/Users/ruesca/WLIA_2014&#39;</span>
+<span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
     <span class="n">desc</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Describe</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
     <span class="n">prjFile</span> <span class="o">=</span> <span class="n">wd</span> <span class="o">+</span> <span class="s">&#39;/&#39;</span> <span class="o">+</span> <span class="n">dataset</span> <span class="o">+</span> <span class="s">&#39;.prj&#39;</span>
     <span class="k">print</span> <span class="n">prjFile</span>
@@ -2766,9 +2772,9 @@ In&nbsp;[37]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-C:\Users\ruesca/pythonWorkshopWLIA2014/Roads_Census2k.prj
-C:\Users\ruesca/pythonWorkshopWLIA2014/Sections.prj
-C:\Users\ruesca/pythonWorkshopWLIA2014/QSections.prj
+C:/Users/ruesca/WLIA_2014/Roads_Census2k.prj
+C:/Users/ruesca/WLIA_2014/Sections.prj
+C:/Users/ruesca/WLIA_2014/QSections.prj
 </pre>
 </div>
 </div>
@@ -2820,6 +2826,38 @@ Nailed it.
 </pre>
 </div>
 </div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="answer">Answer</h5>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[18]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">wd</span> <span class="o">=</span> <span class="s">&#39;C:/Users/ruesca/WLIA_2014&#39;</span>
+<span class="c"># Open the text file outside the loop</span>
+<span class="n">prjFile</span> <span class="o">=</span> <span class="n">wd</span> <span class="o">+</span> <span class="s">&#39;/metadata.txt&#39;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">prjFile</span><span class="p">,</span> <span class="s">&#39;w+&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
+    <span class="n">desc</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Describe</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+    <span class="c">###############################</span>
+    <span class="c"># Write metadata to text file</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">-------------</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">desc</span><span class="o">.</span><span class="n">spatialReference</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">desc</span><span class="o">.</span><span class="n">extent</span><span class="p">))</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n\n\n</span><span class="s">&#39;</span><span class="p">)</span>
+    <span class="c">###############################</span>
+<span class="c"># Close text file after all lines are written</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
 
 </div>
 </div>
