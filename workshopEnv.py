@@ -4,7 +4,7 @@ import urllib
 import zipfile
 # from arcpy import env
 
-url = 'https://dl.dropboxusercontent.com/u/17521862/WLIA_pythonclass_data.gdb.zip'
+url = 'https://dl.dropboxusercontent.com/u/17521862/WLIA_2015_classdata.zip'
 home = os.path.expanduser("~")
 wd = home + '/pythonWorkshopWLIA2014'
 # fgdb = wd + '/WLIA_pythonclass_data.gdb'
