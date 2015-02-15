@@ -6,8 +6,11 @@ from arcpy import env
 
 url = 'https://dl.dropboxusercontent.com/u/17521862/WLIA_2015_classdata.zip'
 home = os.path.expanduser("~")
+print home
 wd = home + '/pythonWorkshopWLIA2014'
+print wd
 fgdb = wd + '/WLIA_pythonclass_data.gdb'
+print fgdb
 env.workspace = fgdb
 
 def refresh_data():
