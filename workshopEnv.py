@@ -16,14 +16,14 @@ print fgdb
 def refresh_data():
 	if not os.path.exists(wd):
 		os.makedirs(wd)
-	urllib.urlretrieve(url, wd + '/data.zip')
-	f = open(wd + '/data.zip', 'rb')
-	print wd + '/data.zip'
+	urllib.urlretrieve(url, wd + '\\data.zip')
+	f = open(wd + '\\data.zip', 'rb')
+	print wd + '\\data.zip'
 	z = zipfile.ZipFile(f)
 	for name in z.namelist():
 		z.extract(name, wd)
 	f.close()
-	os.remove(wd + '/data.zip')
+	os.remove(wd + '\\data.zip')
 	env.workspace = fgdb
 	feature_classes = arcpy.ListFeatureClasses()
 	rasters = arcpy.ListRasters()
